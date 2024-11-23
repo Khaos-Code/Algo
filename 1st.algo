@@ -1,0 +1,37 @@
+def analyze_sentence():
+    # Initialize counters
+    length = 0
+    words = 0
+    vowels = 0
+    
+    # Set of vowels for quick lookup
+    vowel_set = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+    
+    # Input sentence character by character
+    print("Enter a sentence ending with a period:")
+    sentence = ""
+    while True:
+        char = input("Enter next character: ")
+        if char == ".":
+            sentence += char
+            length += 1
+            break
+        sentence += char
+        length += 1
+    
+    # Process the sentence
+    words = 1 if sentence.strip() != "." else 0  # At least one word if not just a period
+    for i, char in enumerate(sentence):
+        if char in vowel_set:
+            vowels += 1
+        if char == " " and i + 1 < len(sentence) and sentence[i + 1] != " ":
+            words += 1
+    
+    # Output results
+    print("Results:")
+    print(f"Length of the sentence: {length}")
+    print(f"Number of words: {words}")
+    print(f"Number of vowels: {vowels}")
+
+# Call the function
+analyze_sentence()
